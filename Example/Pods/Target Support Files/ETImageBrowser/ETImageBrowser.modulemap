@@ -1,0 +1,6 @@
+framework module ETImageBrowser {
+  umbrella header "ETImageBrowser-umbrella.h"
+
+  export *
+  module * { export * }
+}

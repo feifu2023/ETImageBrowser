@@ -7,36 +7,54 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'ETImageBrowser'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of ETImageBrowser.'
+  s.name         = "WYBImageBrowser"
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.version      = "1.0.1"
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.summary      = "iOS image browser / iOS 图片浏览器"
 
-  s.homepage         = 'https://github.com/wjl/ETImageBrowser'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'wjl' => 'et0423www@163.com[c' }
-  s.source           = { :git => 'https://github.com/wjl/ETImageBrowser.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.description  = <<-DESC
+            iOS 图片浏览器，功能强大，易于拓展，极致的性能优化和严格的内存控制让其运行更加的流畅和稳健。
+                   DESC
 
-  s.ios.deployment_target = '10.0'
+  s.homepage     = "https://github.com/feifu2023/ETImageBrowser"
 
-  s.source_files = 'ETImageBrowser/Classes/**/*'
+  s.license      = "MIT"
+
+  s.author       = { "jielin" => "" }
+
+  s.platform     = :ios, "10.0"
+
+  s.source       = { :git => "https://github.com/feifu2023/ETImageBrowser.git", :tag => "#{s.version}" }
+
+  s.requires_arc = true
+  s.frameworks = "Foundation","UIKit"
+
+  s.default_subspec = "Core"
   
-  # s.resource_bundles = {
-  #   'ETImageBrowser' => ['ETImageBrowser/Assets/*.png']
-  # }
+  s.subspec "Core" do |core|
+    core.source_files   = "ETImageBrowser/**/*.{h,m}"
+    core.resources      = "ETImageBrowser/ETImageBrowser.bundle"
+    core.dependency 'YYImage'
+    core.dependency 'SDWebImage', '>= 5.0.0'
+  end
+  s.subspec "NOSD" do |core|
+    core.source_files   = "ETImageBrowser/**/*.{h,m}"
+    core.exclude_files  = "ETImageBrowser/WebImageMediator/YBIBDefaultWebImageMediator.{h,m}"
+    core.resources      = "ETImageBrowser/YBImageBrowser.bundle"
+    core.dependency 'YYImage'
+  end
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.subspec "Video" do |video|
+    video.source_files = "Video/*.{h,m}"
+    video.resources    = "Video/YBImageBrowserVideo.bundle"
+    video.dependency 'ETImageBrowser/Core'
+  end
+  s.subspec "VideoNOSD" do |video|
+    video.source_files = "Video/*.{h,m}"
+    video.resources    = "Video/YBImageBrowserVideo.bundle"
+    video.dependency 'ETImageBrowser/NOSD'
+  end
+
 end
+

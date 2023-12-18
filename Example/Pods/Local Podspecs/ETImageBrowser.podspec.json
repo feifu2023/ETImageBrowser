@@ -1,0 +1,22 @@
+{
+  "name": "ETImageBrowser",
+  "version": "0.1.0",
+  "summary": "A short description of ETImageBrowser.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/wjl/ETImageBrowser",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "wjl": "et0423www@163.com\u001b[c"
+  },
+  "source": {
+    "git": "https://github.com/wjl/ETImageBrowser.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "ETImageBrowser/Classes/**/*"
+}
